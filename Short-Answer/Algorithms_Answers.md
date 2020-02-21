@@ -31,17 +31,44 @@ c)
   **The runnig time-complexity is **O(n)** because it is dependent of the size of the input**
 ## Exercise II
 
+This is an example of O(n)
+
 ```
-Declare variable n = Number of stories in the building
+
+define (Function) takes in one paramenter (n) = Number of stories in the building
+
 Declare variable f = Limit from which floor the thrown egg will break
 
 for each story in n
   check if the Egg is Broken
-    true: increment f by 1
-    false: do nothing
+    true: return f
+    false: increment f by 1
 
 end of loop
 
+return f
+```
+
+We could halve this by doing divide and conquer and get a running time complexity of **O(log n)
+**
+```
+Define (Function = SearchEggLimit) params: (n = Number of stories in the building)
+
+Declare variable f = Limit from which floor the thrown egg will break
+
+  Define (Function = WhenBreaks) params: (n = Number of stories in the building)
+    
+    for each story in n
+      check if the Egg is Broken
+        true: 
+          return f
+        false:
+          increment f by 1
+          call (WhenBreaks) recusrively args: (n // 2) Half of n
+        else:
+          break
+    end of loop
+  
 return f
 ```
 
